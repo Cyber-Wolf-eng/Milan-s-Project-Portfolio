@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Milan Lindo — Engineering Portfolio</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --navy:   #0D1B2A;
+    --blue:   #1A3A6B;
+    --accent: #3B82F6;
+    --cyan:   #06B6D4;
+    --white:  #F0F4FF;
+    --gray:   #8896B3;
+    --card:   #131F30;
+    --border: #1E3050;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2.5rem;
+    background: rgba(13,27,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700; font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 2.5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 780px; }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem; color: var(--cyan);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero-tag::before { content: '> '; opacity: 0.5; }
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 .name-accent { color: var(--accent); }
+  .hero-sub {
+    font-size: 1.15rem; color: var(--gray);
+    max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 600; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.6rem;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    text-decoration: none; cursor: pointer; border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    position: relative; z-index: 1;
+    display: flex; gap: 3rem; margin-top: 5rem;
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 2rem; font-weight: 700; color: var(--accent);
+  }
+  .stat-label { font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2.5rem; max-width: 1100px; margin: 0 auto; }
+  .section-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem; color: var(--cyan);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .divider {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom: 3rem; opacity: 0.4;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--cyan));
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .project-desc { color: var(--gray); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
+  .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem; color: var(--cyan);
+    background: rgba(6,182,212,0.08);
+    border: 1px solid rgba(6,182,212,0.2);
+    padding: 0.2rem 0.6rem; border-radius: 4px;
+  }
+  .project-award {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-size: 0.75rem; font-weight: 600; color: #F59E0B;
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.2);
+    padding: 0.25rem 0.7rem; border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .skill-group-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; color: var(--cyan);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .skill-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 0.6rem; font-size: 0.88rem; color: var(--white);
+  }
+  .skill-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 1.5rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+  }
+  .tl-item { position: relative; margin-bottom: 2.5rem; }
+  .tl-dot {
+    position: absolute; left: -1.87rem; top: 0.35rem;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--navy), 0 0 0 4px var(--accent);
+  }
+  .tl-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; color: var(--cyan);
+    letter-spacing: 0.08em; margin-bottom: 0.25rem;
+  }
+  .tl-role { font-weight: 700; font-size: 1rem; margin-bottom: 0.1rem; }
+  .tl-org { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.6rem; }
+  .tl-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+  /* ── AWARDS ── */
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .award-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 1.25rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .award-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .award-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .award-sub { font-size: 0.78rem; color: var(--gray); }
+
+  /* ── CONTACT ── */
+  #contact { text-align: center; }
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .contact-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    color: var(--white); text-decoration: none;
+    font-size: 0.88rem; font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--gray); font-size: 0.8rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { gap: 1rem; }
+    section { padding: 4rem 1.25rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">ML_portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Electrical Engineering @ Howard University</p>
+    <h1>Milan <span class="name-accent">Lindo</span></h1>
+    <p class="hero-sub">
+      Incoming EE freshman building at the intersection of <strong>hardware, code, and community.</strong>
+      Robotics captain, certified Java developer, Girl Scout Gold Award recipient.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="https://github.com/Cyber-Wolf-eng" target="_blank" class="btn btn-outline">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/milan723" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">388+</div>
+      <div class="stat-label">Volunteer Hours</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Certifications</div>
+    </div>
+    <div>
+      <div class="stat-num">2026</div>
+      <div class="stat-label">Congressional Award</div>
+    </div>
+    <div>
+      <div class="stat-num">2030</div>
+      <div class="stat-label">B.S. EE Expected</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-eyebrow">// what I've built</p>
+  <h2>Projects</h2>
+  <div class="divider"></div>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-icon">🌡️</div>
+      <div class="project-title">Climate Chamber Rover</div>
+      <div class="project-desc">
+        Autonomous rover engineered for real-time climate data recording and line tracking.
+        Built and tested at the Climate, Robotics, Rocketry & Aerospace Engineering Camp — UNC Asheville.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Robotics</span>
+        <span class="tag">Sensors</span>
+        <span class="tag">Autonomous</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🎮</div>
+      <div class="project-award">🥈 2nd Place — Blacks at Microsoft</div>
+      <div class="project-title">Python Adventure Game</div>
+      <div class="project-desc">
+        Branching text-based adventure game with inventory management, decision trees,
+        and win/lose state logic. Developed under mentorship from Microsoft engineers.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">OOP</span>
+        <span class="tag">Game Logic</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">FTC Robot Code — KCAL Fusion</div>
+      <div class="project-desc">
+        Autonomous and TeleOp software for FIRST Tech Challenge competition robot.
+        Managed as Blue Team Captain — encoder-based movement, sensor integration, and drive control.
+      </div>
+      <div class="project-tags">
+        <span class="tag">Java</span>
+        <span class="tag">FTC SDK</span>
+        <span class="tag">Android Studio</span>
+        <span class="tag">REV Hub</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-eyebrow">// tools & technologies</p>
+  <h2>Skills</h2>
+  <div class="divider"></div>
+  <div class="skills-grid">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-item"><span class="skill-dot"></span>Python (Proficient)</div>
+      <div class="skill-item"><span class="skill-dot"></span>Java (Certified)</div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Hardware & Design</div>
+      <div class="skill-item"><span class="skill-dot"></span>Circuit Design</div>
+      <div class="skill-item"><span class="skill-dot"></span>Onshape 3D CAD (Certified)</div>
+      <div class="skill-item"><span class="skill-dot"></span>Robotics Systems</div>
+      <div class="skill-item"><span class="skill-dot"></span>UAV / Drone Systems</div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Professional</div>
+      <div class="skill-item"><span class="skill-dot"></span>Project Leadership</div>
+      <div class="skill-item"><span class="skill-dot"></span>Team Management</div>
+      <div class="skill-item"><span class="skill-dot"></span>Scouting & Strategy</div>
+      <div class="skill-item"><span class="skill-dot"></span>Office 365</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-eyebrow">// where I've been</p>
+  <h2>Experience</h2>
+  <div class="divider"></div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Aug 2026 → Present</div>
+      <div class="tl-role">B.S. Electrical Engineering</div>
+      <div class="tl-org">Howard University — Washington, DC</div>
+      <div class="tl-desc">College of Engineering & Architecture. Expected graduation May 2030.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2025 – 2026</div>
+      <div class="tl-role">Blue Team Captain & Lead Technician</div>
+      <div class="tl-org">KCAL Fusion Robotics — Keller, TX</div>
+      <div class="tl-desc">Led technical design and competition strategy for FIRST Tech Challenge. Managed software, scouting, and cross-team sponsorship efforts.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Summer 2024</div>
+      <div class="tl-role">Student Mentee</div>
+      <div class="tl-org">Blacks at Microsoft — Irving, TX</div>
+      <div class="tl-desc">Built a 2nd-place award-winning Python adventure game under mentorship from Microsoft engineers.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Summer 2023</div>
+      <div class="tl-role">Engineering Camp Participant</div>
+      <div class="tl-org">UNC Asheville — Asheville, NC</div>
+      <div class="tl-desc">Engineered a climate chamber rover with autonomous line tracking and real-time data logging.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2013 – 2026</div>
+      <div class="tl-role">Ambassador</div>
+      <div class="tl-org">Girl Scouts of America — Dallas, TX</div>
+      <div class="tl-desc">Earned Bronze, Silver, and Gold Awards. Completed 119+ hours of community impact for Gold Award project.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <p class="section-eyebrow">// recognition</p>
+  <h2>Honors & Certifications</h2>
+  <div class="divider"></div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-icon">🌿</div>
+      <div>
+        <div class="award-title">Girl Scout Gold Award</div>
+        <div class="award-sub">119 hours of community impact · 2025</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🏅</div>
+      <div>
+        <div class="award-title">Congressional Award</div>
+        <div class="award-sub">Gold, Silver & Bronze Medal + Certificate · 2026</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">☕</div>
+      <div>
+        <div class="award-title">Java Certification</div>
+        <div class="award-sub">Certiport · 2024</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">📐</div>
+      <div>
+        <div class="award-title">Onshape CAD Certification</div>
+        <div class="award-sub">Onshape Fundamentals · 2023</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🥈</div>
+      <div>
+        <div class="award-title">2nd Place — Game Design</div>
+        <div class="award-sub">Blacks at Microsoft Summer Program · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-eyebrow">// let's connect</p>
+  <h2>Get In Touch</h2>
+  <div class="divider"></div>
+  <p style="color:var(--gray); max-width:480px; margin:0 auto;">
+    I'm always open to internship opportunities, project collaborations, and conversations about engineering. Reach out anytime.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:milan.lindo816@gmail.com" class="contact-pill">✉️ milan.lindo816@gmail.com</a>
+    <a href="https://github.com/Cyber-Wolf-eng" target="_blank" class="contact-pill">🐙 GitHub</a>
+    <a href="https://www.linkedin.com/in/milan723" target="_blank" class="contact-pill">💼 LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Milan Lindo · Built with HTML/CSS · Hosted on GitHub Pages
+</footer>
+
+</body>
+</html>
