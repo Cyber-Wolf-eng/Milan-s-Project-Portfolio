@@ -1,5 +1,7 @@
 https://cyber-wolf-eng.github.io/Milan-s-Project-Portfolio/ 
 
+https://sites.google.com/view/portfolio-milan-/home
+
 Personal Portfolio
 TO DO's
   - Add photos of the projects
