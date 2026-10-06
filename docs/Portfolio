@@ -159,6 +159,7 @@
   .project-card:hover::before { opacity: 1; }
   .project-icon { font-size: 2rem; margin-bottom: 1rem; }
   .project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .project-date {font-size: 0.9 rem; font-weight: 400; margin-bottom:0.5 rem; }
   .project-desc { color: var(--gray); font-size: 0.9rem; line-height: 1.65; margin-bottom: 1.25rem; }
   .project-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .tag {
@@ -336,6 +337,7 @@
   <section id="projects">
   <p class="section-eyebrow">// what I've built</p>
   <h2>Projects</h2>
+<!--<p class="section-eyebrow">// Click each project to see documentation</p>-->
   <div class="divider"></div>
   <div class="projects-grid">
 
@@ -344,6 +346,7 @@
   <div class="project-card">
       <div class="project-icon">⚙️</div>
       <div class="project-title">HU Formula Car</div>
+      <div class="project-date">Sept 2026 -Present </div>
       <div class="project-desc">
        Collaborate on designing and building an Electric Race car. 
       </div> 
@@ -358,6 +361,7 @@
   <div class="project-card">
       <div class="project-icon">⚙️</div>
       <div class="project-title">HU Robotics- VEX Competition</div>
+      <div class="project-date">Sept 2026 -Present </div>
       <div class="project-desc">
        Collaborate on designing and building a robot to compete in the 2026-2027 VEX Competion
       </div> 
@@ -371,6 +375,7 @@
   <div class="project-card">
       <div class="project-icon">⚙️</div>
       <div class="project-title">IEEE HOPE project - PCB project </div>
+      <div class="project-date">Oct 2026 -Present </div>
       <div class="project-desc">
       Design and build a class D audio amplifier. 
       </div> 
@@ -424,7 +429,19 @@
         <span class="tag">Wiring</span>
       </div>
     </div>
-    
+
+     <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">Clock/Counter </div>
+      <div class="project-desc">
+       Designed and built a Clock using a breadboard, wires, capacitor, several digital integrated circuits and mutism. 
+      </div>
+      <div class="project-tags">
+        <span class="tag">Power tools</span>
+        <span class="tag">Soldering</span>
+      </div>
+      </div>
+
       <div class="project-card">
       <div class="project-icon">⚙️</div>
       <div class="project-title">Number Decider</div>
