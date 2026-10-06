@@ -338,7 +338,50 @@
   <h2>Projects</h2>
   <div class="divider"></div>
   <div class="projects-grid">
-    
+
+<!-- Current Data I inputed-->
+
+  <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">HU Formula Car</div>
+      <div class="project-desc">
+       Collaborate on designing and building an Electric Race car. 
+      </div> 
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Power tools</span>
+        <span class="tag">Wiring</span>
+        <span class="tag">Design Rules</span>
+      </div>
+    </div>
+
+  <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">HU Robotics- VEX Competition</div>
+      <div class="project-desc">
+       Collaborate on designing and building a robot to compete in the 2026-2027 VEX Competion
+      </div> 
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Power tools</span>
+        <span class="tag">Fusion 360</span>
+      </div>
+    </div>
+
+  <div class="project-card">
+      <div class="project-icon">⚙️</div>
+      <div class="project-title">IEEE HOPE project - PCB project </div>
+      <div class="project-desc">
+      Design and build a class D audio amplifier. 
+      </div> 
+      <div class="project-tags">
+        <!-- <span class="tag">Power tools</span> -->
+        <span class="tag">Wiring</span>
+        <span class="tag">PCB DESIGN</span>
+      </div>
+    </div>
+
+
    <div class="project-card">
       <div class="project-icon">⚙️</div>
       <div class="project-title">FRC Robot — KCAL Fusion</div>
