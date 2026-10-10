@@ -1,10 +1,9 @@
+Personal Portfolio
+
+The Website link
 https://cyber-wolf-eng.github.io/Milan-s-Project-Portfolio/ 
 
-https://sites.google.com/view/portfolio-milan-/home
+The Picture site:
+https://sites.google.com/view/portfolio-milan-/home 
 
-Personal Portfolio
-TO DO's
-  - Add photos of the projects
-  - Add a tester site for the coding projects to be linked
-  - move the coding projects from codeHS to this
-  - 
+
